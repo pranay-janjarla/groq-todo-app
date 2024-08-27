@@ -4,17 +4,17 @@
 
 :root {
   --foreground-rgb: 33, 37, 41;
-  --background-start-rgb: 238, 242, 246; 
-  --background-end-rgb: 255, 255, 255; 
-  --accent-color: 75, 85, 99; 
+  --background-start-rgb: 238, 242, 246;
+  --background-end-rgb: 255, 255, 255;
+  --accent-color: 75, 85, 99;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 30, 30, 30; 
-    --background-end-rgb: 15, 15, 15; 
-    --accent-color: 150, 150, 150; 
+    --background-start-rgb: 30, 30, 30;
+    --background-end-rgb: 15, 15, 15;
+    --accent-color: 150, 150, 150;
   }
 }
 
@@ -29,8 +29,10 @@ body {
       rgb(var(--background-start-rgb)),
       rgb(var(--background-end-rgb))
     );
-  font-family: 'Inter', sans-serif; 
-  min-height: 100vh; 
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 button {
@@ -42,7 +44,41 @@ button {
   outline: none;
   padding: 0.5rem 1rem;
   border-radius: 8px;
- background-color: rgb(181, 181, 181);  
+  background-color: rgb(145, 70, 70);
+}
+textarea {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  height: 40px;
+  padding: 8px;
+  width: 100%;
+  background-color: rgb(204, 202, 202);
+}
+li{
+  list-style-type: none;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  height: fit-content;
+  width: 500px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom:10px;
+  padding-left: 10px;
+  background-color: rgb(196, 196, 196);
+  border-radius: 10px;
+}
+h2{
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+
 }
 
 @layer utilities {
@@ -51,25 +87,25 @@ button {
   }
 
   .container {
-    max-width: 4xl;
+    width: 50%;
     margin: 0 auto;
     padding: 1rem;
   }
 
   .card {
-    background-color: rgba(var(--background-end-rgb), 0.9); 
+    background-color: rgba(var(--background-end-rgb), 0.9);
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
     transition: transform 0.2s ease-in-out;
   }
 
   .card:hover {
-    transform: translateY(-5px); 
+    transform: translateY(-5px);
   }
 
   .btn-primary {
-    background-color: rgb(var(--accent-color)); 
+    background-color: rgb(var(--accent-color));
     color: rgb(var(--foreground-rgb));
     padding: 0.75rem 1.5rem;
     border-radius: 8px;
@@ -78,7 +114,7 @@ button {
   }
 
   .btn-primary:hover {
-    background-color: rgba(var(--accent-color), 0.85); 
+    background-color: rgba(var(--accent-color), 0.85);
     transform: translateY(-2px);
   }
 
@@ -93,5 +129,64 @@ button {
   .input-field:focus {
     border-color: rgb(var(--accent-color));
     outline: none;
+  }
+
+  /* Custom chat styling */
+  .chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-width: 480px; /* Set a max width to make it look more like a chat app */
+    margin: 0 auto;
+    background-color: rgba(var(--background-end-rgb), 0.9);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .chat-messages {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+  }
+
+  .chat-message {
+    margin-bottom: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    max-width: 80%;
+    position: relative;
+  }
+
+  .chat-message.user {
+    background-color: rgb(66, 153, 225);
+    color: white;
+    align-self: flex-end;
+  }
+
+  .chat-message.assistant {
+    background-color: rgb(243, 243, 243);
+    color: rgb(33, 37, 41);
+    align-self: flex-start;
+  }
+
+  .chat-message:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border: 0.75rem solid transparent;
+  }
+
+  .chat-message.user:before {
+    right: -0.75rem;
+    border-left-color: rgb(66, 153, 225);
+    border-width: 0.75rem 0.75rem 0.75rem 0;
+  }
+
+  .chat-message.assistant:before {
+    left: -0.75rem;
+    border-right-color: rgb(243, 243, 243);
+    border-width: 0.75rem 0 0.75rem 0.75rem;
   }
 }

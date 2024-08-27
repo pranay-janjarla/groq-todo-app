@@ -1,19 +1,16 @@
-import { useState } from "react";
-// import TodoForm from "../components/TodoForm";
-// import TodoList from "../components/TodoList";
-// import ChatButton from "../components/ChatButton";
+import React from "react";
 import AskAiButton from "../components/AskAiButton";
 
-export default function Home() {
-  const [todos, setTodos] = useState([]);
-
-  const addTodo = (todo) => {
-    setTodos([...todos, todo]);
-  };
-
+const HomePage = () => {
   return (
-    <div>
-      <AskAiButton onChangeTodos={setTodos} />
+    <div className="App">
+      {/* <h1>Study Aid Generator</h1> */}
+      <AskAiButton />
+      {/* <MindMap />
+      <TreeDiagram />
+      <Flashcards /> */}
     </div>
   );
-}
+};
+
+export default HomePage;
